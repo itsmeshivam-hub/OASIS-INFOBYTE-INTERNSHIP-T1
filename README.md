@@ -1,122 +1,73 @@
-# OASIS-INFOBYTE-INTERNSHIP-T1
-A console-based Number Guessing Game developed in Java as part of my Java Development Internship at Oasis Infobyte. Features difficulty levels, random number generation, limited attempts, score tracking, and replay functionality
 
- ~~~~code~~~~
- 
-import java.util.Random;
-import java.util.Scanner;
+# Number Guessing Game
 
-public class NumberGuessingGame {
+A console-based number guessing game developed in Java. The application generates a random number, and the player must identify it within a limited number of attempts. It offers three difficulty levels, interactive hints, and score tracking across multiple rounds.
 
-    public static void main(String[] args) {
+## Features
 
-        Scanner sc = new Scanner(System.in);
-        Random random = new Random();
+- **Difficulty Levels:** Easy, Medium, and Hard.
+- **Random Number Generation:** Generates a secret number for each round.
+- **Attempt Limits:** Different attempt limits based on difficulty.
+- **Interactive Feedback:** Provides hints when a guess is too high or too low.
+- **Score Tracking:** Tracks completed rounds and rounds won.
+- **Replay Functionality:** Allows players to start another round without restarting the application.
+- **Input Range Validation:** Checks whether guesses fall within the selected number range.
 
-        int round = 1;
-        int totalScore = 0;
-        String playAgain;
+## Technologies Used
 
-        System.out.println("================================");
-        System.out.println("     NUMBER GUESSING GAME");
-        System.out.println("================================");
+- Java
+- Java Random Class
+- Java Scanner Class
+- Control Flow Statements
+- Loops and Conditional Logic
 
-        do {
-            System.out.println("\nSelect Difficulty:");
-            System.out.println("1. Easy   (1-50, 10 attempts)");
-            System.out.println("2. Medium (1-100, 7 attempts)");
-            System.out.println("3. Hard   (1-200, 5 attempts)");
-            System.out.print("Enter your choice: ");
+## Difficulty Levels
 
-            int choice = sc.nextInt();
+| Difficulty | Number Range | Maximum Attempts |
+|---|---|---|
+| Easy | 1–50 | 10 |
+| Medium | 1–100 | 7 |
+| Hard | 1–200 | 5 |
 
-            int maxNumber;
-            int maxAttempts;
+## Getting Started
 
-            switch (choice) {
-                case 1:
-                    maxNumber = 50;
-                    maxAttempts = 10;
-                    break;
+### Prerequisites
 
-                case 2:
-                    maxNumber = 100;
-                    maxAttempts = 7;
-                    break;
+- Java Development Kit (JDK)
+- A Java IDE or terminal
 
-                case 3:
-                    maxNumber = 200;
-                    maxAttempts = 5;
-                    break;
+### Installation and Execution
 
-                default:
-                    System.out.println("Invalid choice! Medium selected.");
-                    maxNumber = 100;
-                    maxAttempts = 7;
-            }
+1. Clone or download this repository.
+2. Open the project directory in your preferred Java IDE.
+3. Ensure that `NumberGuessingGame.java` is saved in the project directory.
+4. Compile and run the application using:
 
-            int secretNumber = random.nextInt(maxNumber) + 1;
-            int attempts = 0;
-            boolean guessed = false;
+```bash
+javac NumberGuessingGame.java
+java NumberGuessingGame
+```
 
-            System.out.println("\nRound " + round);
-            System.out.println("Guess a number between 1 and "
-                    + maxNumber);
-            System.out.println("Maximum attempts: " + maxAttempts);
+## How to Play
 
-            while (attempts < maxAttempts) {
+1. Select a difficulty level.
+2. Enter a number within the displayed range.
+3. Use the hints to guide your next guess.
+4. Guess the correct number before exhausting your attempts to win the round.
+5. Choose whether to play another round.
+6. Review your total rounds played and rounds won.
 
-                System.out.print("\nEnter your guess: ");
-                int guess = sc.nextInt();
-                attempts++;
+## Learning Outcomes
 
-                System.out.println("Attempt: " + attempts
-                        + "/" + maxAttempts);
+This project demonstrates practical use of Java fundamentals, including user input, random number generation, switch statements, loops, conditional logic, input validation, and basic score management.
 
-                if (guess < 1 || guess > maxNumber) {
-                    System.out.println("Enter a number within the range!");
-                } else if (guess > secretNumber) {
-                    System.out.println("Too High!");
-                } else if (guess < secretNumber) {
-                    System.out.println("Too Low!");
-                } else {
-                    System.out.println("Correct!");
-                    guessed = true;
-                    totalScore++;
+## Author
 
-                    System.out.println("Round " + round
-                            + " — guessed in " + attempts
-                            + " attempts.");
-                    break;
-                }
-            }
+**Shivam Tiwari**
 
-            if (!guessed) {
-                System.out.println("\nYou Lost!");
-                System.out.println("The correct number was: "
-                        + secretNumber);
-                System.out.println("Round " + round
-                        + " — not guessed in "
-                        + maxAttempts + " attempts.");
-            }
+- GitHub: [itsmeshivam-hub](https://github.com/itsmeshivam-hub)
+- LinkedIn: [Shivam Tiwari](https://www.linkedin.com/in/shivamtiwari-tech/)
 
-            System.out.println("\nRounds completed: " + round);
-            System.out.println("Rounds won: " + totalScore);
+---
 
-            System.out.print("\nPlay Again? (yes/no): ");
-            playAgain = sc.next();
-
-            round++;
-
-        } while (playAgain.equalsIgnoreCase("yes"));
-
-        System.out.println("\n================================");
-        System.out.println("        GAME OVER");
-        System.out.println("Total rounds played: " + (round - 1));
-        System.out.println("Total rounds won: " + totalScore);
-        System.out.println("Thanks for playing!");
-        System.out.println("================================");
-
-        sc.close();
-    }
-}
+If you find this project useful, consider starring the repository.
